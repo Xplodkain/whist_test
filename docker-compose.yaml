@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: dockerfile
     volumes:
-     - app1_logs:/logs
+     - app1_logs:/app/logs
     depends_on:
      db: 
         condition: service_healthy

@@ -2,10 +2,13 @@ from flask import Flask, request, make_response
 import mysql.connector
 import socket
 from datetime import datetime, timedelta
-
+import logging
+from logging.handlers import RotatingFileHandler
 
 
 app = Flask(__name__)
+
+logging.basicConfig(filename='./logs/flask.log',level=logging.DEBUG)
 
 def db_connect(): 
     db = mysql.connector.connect(
