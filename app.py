@@ -8,11 +8,11 @@ from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
-logging.basicConfig(filename='./logs/flask.log',level=logging.DEBUG)
+#logging.basicConfig(filename='./logs/flask.log',level=logging.DEBUG)
 
 def db_connect(): 
     db = mysql.connector.connect(
-        host="vlad-db.coow8klldjgb.us-east-1.rds.amazonaws.com",
+        host="database-1.cyascaiadbtj.eu-west-2.rds.amazonaws.com",
         user="root", 
         port=3306,
         password="12345678",
@@ -49,7 +49,7 @@ def counter():
     expiration = datetime.now() + timedelta(minutes=5)
     response.set_cookie('internal_ip', server_ip, expires=expiration)
     client_ip = request.remote_addr
-    log_entry = (date_time, client_ip, server_ip)
+    #log_entry = (date_time, client_ip, server_ip)
     cursor.execute('INSERT INTO access_log (date_time, client_ip, server_ip) VALUES (%s, %s, %s)', log_entry )
 
     db.commit()
