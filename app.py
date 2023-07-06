@@ -12,10 +12,10 @@ logging.basicConfig(filename='./logs/flask.log',level=logging.DEBUG)
 
 def db_connect(): 
     db = mysql.connector.connect(
-        host="db",
+        host="vlad-db.coow8klldjgb.us-east-1.rds.amazonaws.com",
         user="root", 
         port=3306,
-        password="123456",
+        password="12345678",
         database="access_log"
     )
     return db
