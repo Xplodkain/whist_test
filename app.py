@@ -16,7 +16,7 @@ def db_connect():
         user="root", 
         port=3306,
         password="12345678",
-        database="access_log"
+        database="mydb"
     )
     return db
 
@@ -49,7 +49,7 @@ def counter():
     expiration = datetime.now() + timedelta(minutes=5)
     response.set_cookie('internal_ip', server_ip, expires=expiration)
     client_ip = request.remote_addr
-    #log_entry = (date_time, client_ip, server_ip)
+    log_entry = (date_time, client_ip, server_ip)
     cursor.execute('INSERT INTO access_log (date_time, client_ip, server_ip) VALUES (%s, %s, %s)', log_entry )
 
     db.commit()
